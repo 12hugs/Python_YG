@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plandly.db.PlandlyMemberMapper"> <!-- 확장자를 제외한 현재 경로 잘 적어주기. -->
+
+	<insert id="join" parameterType="com.plandly.model.Plandly_MemberVO">
+		insert into member_test values (#{email}, #{pw}, #{age}, #{gender}, #{nickName})
+	</insert>
+	
+	<select id="login" parameterType="com.plandly.model.Plandly_MemberVO" resultType="int">
+		SELECT COUNT(*) FROM member_test WHERE email = #{email}
+	</select>
+	
+	<select id="memberSession" parameterType="com.plandly.model.Plandly_MemberVO" resultType="com.plandly.model.Plandly_MemberVO">
+	    SELECT * FROM member_test WHERE email = #{email}
+	</select>
+</mapper>
